@@ -1,0 +1,15 @@
+local Player = game:GetService('Players').LocalPlayer;
+local Camera = workspace.Camera;
+local Speed = 100;
+
+game:GetService'RunService'.RenderStepped:Connect(function()
+    if (getgenv().Toggled == true and Player.Character and Player.Character:FindFirstChild('HumanoidRootPart')) then
+        Player.Character.HumanoidRootPart.Velocity = Camera.CFrame.LookVector * Speed;
+    end;
+end)
+
+Player:GetMouse().KeyDown:connect(function(key)
+if key == "z" then
+ getgenv().Toggled = not getgenv().Toggled;
+end
+end)
